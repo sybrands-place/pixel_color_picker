@@ -19,19 +19,13 @@ class ColorPicker {
       pixelPosition.dy.toInt(),
     );
 
-    final _rgba = abgrToRgba(_abgrPixel);
-
-    final _color = Color(_rgba);
+    final _color = Color.fromARGB(
+      _abgrPixel.a.toInt(),
+      _abgrPixel.r.toInt(),
+      _abgrPixel.g.toInt(),
+      _abgrPixel.b.toInt(),
+    );
 
     return _color;
-  }
-
-  int abgrToRgba(int argb) {
-    int r = (argb >> 16) & 0xFF;
-    int b = argb & 0xFF;
-
-    final _rgba = (argb & 0xFF00FF00) | (b << 16) | r;
-
-    return _rgba;
   }
 }
