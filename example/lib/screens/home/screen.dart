@@ -3,6 +3,8 @@ import 'colored_grid.dart';
 import 'image.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -15,9 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            RaisedButton(
-              color: Theme.of(context).primaryColor,
-              child: Text(
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor:
+                    WidgetStateProperty.all(Theme.of(context).primaryColor),
+              ),
+              child: const Text(
                 'Colored Grid',
                 style: TextStyle(
                   color: Colors.white,
@@ -28,15 +33,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return ColoredGridScreen();
+                      return const ColoredGridScreen();
                     },
                   ),
                 );
               },
             ),
-            RaisedButton(
-              color: Theme.of(context).primaryColor,
-              child: Text(
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor:
+                    WidgetStateProperty.all(Theme.of(context).primaryColor),
+              ),
+              child: const Text(
                 'Image',
                 style: TextStyle(
                   color: Colors.white,
@@ -47,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return ImageScreen();
+                      return const ImageScreen();
                     },
                   ),
                 );

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pixel_color_picker/pixel_color_picker.dart';
 
 class ColoredGridScreen extends StatefulWidget {
+  const ColoredGridScreen({super.key});
+
   @override
   _ColoredGridScreenState createState() => _ColoredGridScreenState();
 }
@@ -33,7 +35,7 @@ class _ColoredGridScreenState extends State<ColoredGridScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: color,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {},
       ),
       body: PixelColorPicker(
@@ -44,8 +46,8 @@ class _ColoredGridScreenState extends State<ColoredGridScreen> {
         },
         child: GridView.builder(
           shrinkWrap: true,
-          physics: ClampingScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          physics: const ClampingScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
           ),
           itemBuilder: (context, index) {

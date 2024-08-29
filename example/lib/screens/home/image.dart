@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pixel_color_picker/pixel_color_picker.dart';
 
 class ImageScreen extends StatefulWidget {
+  const ImageScreen({super.key});
+
   @override
   _ImageScreenState createState() => _ImageScreenState();
 }
@@ -14,7 +16,7 @@ class _ImageScreenState extends State<ImageScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: color,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {},
       ),
       body: PixelColorPicker(
