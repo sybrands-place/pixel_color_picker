@@ -15,8 +15,11 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            RaisedButton(
-              color: Theme.of(context).primaryColor,
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor:
+                    WidgetStateProperty.all(Theme.of(context).primaryColor),
+              ),
               child: Text(
                 'Colored Grid',
                 style: TextStyle(
@@ -34,8 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             ),
-            RaisedButton(
-              color: Theme.of(context).primaryColor,
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor:
+                    WidgetStateProperty.all(Theme.of(context).primaryColor),
+              ),
               child: Text(
                 'Image',
                 style: TextStyle(

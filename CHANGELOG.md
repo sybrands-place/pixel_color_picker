@@ -1,4 +1,6 @@
 # Pixel Color Picker
+## [1.0.1]
+ * updated dependencies
 
 ## [0.0.2+4]
 
