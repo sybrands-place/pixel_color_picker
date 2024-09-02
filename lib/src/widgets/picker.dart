@@ -87,7 +87,7 @@ class _PixelColorPickerState extends State<PixelColorPicker> {
 
     final _color = await _colorPicker!.getColor(pixelPosition: _localOffset);
 
-    widget.onChanged(_color, _localOffset);
+    widget.onChanged(_color, offset);
   }
 
   Offset _findLocalOffset(Offset offset) {
