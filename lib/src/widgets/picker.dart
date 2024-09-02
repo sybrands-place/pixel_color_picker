@@ -7,7 +7,7 @@ import 'package:pixel_color_picker/src/services/pixel_color_picker.dart';
 
 class PixelColorPicker extends StatefulWidget {
   final Widget child;
-  final Function(Color color) onChanged;
+  final Function(Color color, [Offset offset]) onChanged;
   final double maxScale;
   final double minScale;
   final bool panEnabled;
@@ -67,7 +67,7 @@ class _PixelColorPickerState extends State<PixelColorPicker> {
     );
   }
 
-  _onInteract(Offset offset) async {
+  Future<void> _onInteract(Offset offset) async {
     if (_colorPicker == null) {
       final _snapshot = await _loadSnapshot();
 
@@ -87,10 +87,10 @@ class _PixelColorPickerState extends State<PixelColorPicker> {
 
     final _color = await _colorPicker!.getColor(pixelPosition: _localOffset);
 
-    widget.onChanged(_color);
+    widget.onChanged(_color, _localOffset);
   }
 
-  _findLocalOffset(Offset offset) {
+  Offset _findLocalOffset(Offset offset) {
     final RenderBox _interactiveViewerBox =
         _interactiveViewerKey.currentContext!.findRenderObject() as RenderBox;
 

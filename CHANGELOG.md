@@ -1,4 +1,7 @@
 # Pixel Color Picker
+## [1.0.2]
+ * added optional offset to callback
+
 ## [1.0.1]
  * updated dependencies
 
