@@ -8,11 +8,19 @@ import 'package:pixel_color_picker/src/services/pixel_color_picker.dart';
 class PixelColorPicker extends StatefulWidget {
   final Widget child;
   final Function(Color color) onChanged;
+  final double maxScale;
+  final double minScale;
+  final bool panEnabled;
+  final bool scaleEnabled;
 
   const PixelColorPicker({
     Key? key,
     required this.child,
     required this.onChanged,
+    this.maxScale = 10,
+    this.minScale = 0.8,
+    this.panEnabled = true,
+    this.scaleEnabled = true,
   }) : super(key: key);
 
   @override
@@ -27,7 +35,8 @@ class _PixelColorPickerState extends State<PixelColorPicker> {
 
   Future<ui.Image> _loadSnapshot() async {
     final RenderRepaintBoundary _repaintBoundary =
-        _repaintBoundaryKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+        _repaintBoundaryKey.currentContext!.findRenderObject()
+            as RenderRepaintBoundary;
 
     final _snapshot = await _repaintBoundary.toImage();
 
@@ -42,7 +51,10 @@ class _PixelColorPickerState extends State<PixelColorPicker> {
           key: _repaintBoundaryKey,
           child: InteractiveViewer(
             key: _interactiveViewerKey,
-            maxScale: 10,
+            maxScale: widget.maxScale,
+            minScale: widget.minScale,
+            panEnabled: widget.panEnabled,
+            scaleEnabled: widget.scaleEnabled,
             onInteractionUpdate: (details) {
               final _offset = details.focalPoint;
 
