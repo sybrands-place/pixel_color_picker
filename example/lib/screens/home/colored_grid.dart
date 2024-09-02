@@ -37,7 +37,7 @@ class _ColoredGridScreenState extends State<ColoredGridScreen> {
         onPressed: () {},
       ),
       body: PixelColorPicker(
-        onChanged: (color) {
+        onChanged: (color, pixel) {
           setState(() {
             this.color = color;
           });

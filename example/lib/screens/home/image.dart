@@ -18,7 +18,7 @@ class _ImageScreenState extends State<ImageScreen> {
         onPressed: () {},
       ),
       body: PixelColorPicker(
-        onChanged: (color) {
+        onChanged: (color, pixel) {
           setState(() {
             this.color = color;
           });

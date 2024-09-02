@@ -7,7 +7,7 @@ import 'package:pixel_color_picker/src/services/pixel_color_picker.dart';
 
 class PixelColorPicker extends StatefulWidget {
   final Widget child;
-  final void Function(Color color, Offset offset) onChanged;
+  final void Function(Color color, Offset pixel) onChanged;
   final double maxScale;
   final double minScale;
   final bool panEnabled;
