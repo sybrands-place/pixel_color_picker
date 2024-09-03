@@ -11,21 +11,28 @@ class ColorPicker {
 
   ColorPicker({this.bytes});
 
-  Future<Color> getColor({required Offset pixelPosition}) async {
+  Size getSize() {
     _decodedImage ??= img.decodeImage(bytes!);
 
-    final _abgrPixel = _decodedImage!.getPixelSafe(
+    return Size(
+      _decodedImage!.width.toDouble(),
+      _decodedImage!.height.toDouble(),
+    );
+  }
+
+  Color getColor({required Offset pixelPosition}) {
+    _decodedImage ??= img.decodeImage(bytes!);
+
+    final abgrPixel = _decodedImage!.getPixelSafe(
       pixelPosition.dx.toInt(),
       pixelPosition.dy.toInt(),
     );
 
-    final _color = Color.fromARGB(
-      _abgrPixel.a.toInt(),
-      _abgrPixel.r.toInt(),
-      _abgrPixel.g.toInt(),
-      _abgrPixel.b.toInt(),
+    return Color.fromARGB(
+      abgrPixel.a.toInt(),
+      abgrPixel.r.toInt(),
+      abgrPixel.g.toInt(),
+      abgrPixel.b.toInt(),
     );
-
-    return _color;
   }
 }

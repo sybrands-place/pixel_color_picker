@@ -7,7 +7,7 @@ import 'package:pixel_color_picker/src/services/pixel_color_picker.dart';
 
 class PixelColorPicker extends StatefulWidget {
   final Widget child;
-  final void Function(Color color, Offset pixel) onChanged;
+  final void Function(Color color, Size size, Offset pixel) onChanged;
   final double maxScale;
   final double minScale;
   final bool panEnabled;
@@ -34,13 +34,11 @@ class _PixelColorPickerState extends State<PixelColorPicker> {
   final _interactiveViewerKey = GlobalKey();
 
   Future<ui.Image> _loadSnapshot() async {
-    final RenderRepaintBoundary _repaintBoundary =
+    final RenderRepaintBoundary repaintBoundary =
         _repaintBoundaryKey.currentContext!.findRenderObject()
             as RenderRepaintBoundary;
 
-    final _snapshot = await _repaintBoundary.toImage();
-
-    return _snapshot;
+    return repaintBoundary.toImage();
   }
 
   @override
@@ -83,19 +81,18 @@ class _PixelColorPickerState extends State<PixelColorPicker> {
       _snapshot.dispose();
     }
 
-    final _localOffset = _findLocalOffset(offset);
+    final localOffset = _findLocalOffset(offset);
 
-    final _color = await _colorPicker!.getColor(pixelPosition: _localOffset);
+    final color = _colorPicker!.getColor(pixelPosition: localOffset);
+    final size = _colorPicker!.getSize();
 
-    widget.onChanged(_color, offset);
+    widget.onChanged(color, size, localOffset);
   }
 
   Offset _findLocalOffset(Offset offset) {
-    final RenderBox _interactiveViewerBox =
+    final RenderBox interactiveViewerBox =
         _interactiveViewerKey.currentContext!.findRenderObject() as RenderBox;
 
-    final _localOffset = _interactiveViewerBox.globalToLocal(offset);
-
-    return _localOffset;
+    return interactiveViewerBox.globalToLocal(offset);
   }
 }

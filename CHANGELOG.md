@@ -1,4 +1,10 @@
 # Pixel Color Picker
+## [1.0.4]
+ * added size to callback
+
+## [1.0.3]
+* non-optional properties to callback
+
 ## [1.0.2]
  * added offset to callback
 
